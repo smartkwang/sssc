@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>세종교육의 미래 중심, 학교지원본부</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Gaegu:wght@300;400;700&family=Nanum+Pen+Script&display=swap');
+    
+    :root {
+      --color-1: #593C47;
+      --color-2: #F2E63D;
+      --color-3: #F2C53D;
+      --color-4: #F25C05;
+      --color-5: #F24405;
+      --color-dark: #334155;
+      --color-accent: #1e40af;
+      --color-light: #f8fafc;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Gaegu', cursive;
+      background-color: #f9fafb;
+      color: var(--color-dark);
+      line-height: 1.4;
+      padding: 20px;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background-color: white;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+      padding: 30px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+      padding-bottom: 20px;
+      border-bottom: 2px dashed var(--color-3);
+      position: relative;
+    }
+    
+    .title {
+      font-size: 32px;
+      font-weight: 700;
+      background: linear-gradient(45deg, var(--color-1), var(--color-5));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-fill-color: transparent;
+      font-family: 'Nanum Pen Script', cursive;
+      position: relative;
+    }
+    
+    .title::after {
+      content: "";
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, var(--color-3), var(--color-4));
+      border-radius: 2px;
+    }
+    
+    .date-source {
+      font-size: 14px;
+      color: #64748b;
+      text-align: right;
+    }
+    
+    .content {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    
+    .section {
+      margin-bottom: 30px;
+    }
+    
+    .section-title {
+      font-size: 18px;
+      color: var(--color-accent);
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .icon {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+    
+    .card {
+      background-color: white;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 20px;
+      position: relative;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      border: 2px solid #f0f0f0;
+      border-style: dashed;
+    }
+    
+    .card::before {
+      content: "";
+      position: absolute;
+      top: -8px;
+      left: 20px;
+      width: 50px;
+      height: 16px;
+      background-color: var(--color-2);
+      border-radius: 4px;
+      transform: rotate(-2deg);
+      z-index: -1;
+    }
+    
+    .highlight {
+      background-color: var(--color-2);
+      padding: 0 5px;
+      font-weight: bold;
+      border-radius: 4px;
+    }
+    
+    .arrow {
+      display: inline-block;
+      width: 30px;
+      height: 20px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23F25C05' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14'%3E%3C/path%3E%3Cpath d='M12 5l7 7-7 7'%3E%3C/path%3E%3C/svg%3E");
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      margin: 0 5px;
+    }
+    
+    .bubble {
+      position: relative;
+      background-color: var(--color-light);
+      border-radius: 12px;
+      padding: 15px;
+      margin: 15px 0;
+      border: 2px solid var(--color-3);
+    }
+    
+    .bubble::before {
+      content: "";
+      position: absolute;
+      top: -10px;
+      left: 20px;
+      width: 0;
+      height: 0;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-bottom: 10px solid var(--color-3);
+    }
+    
+    .dept-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 15px;
+    }
+    
+    .dept {
+      background-color: white;
+      border: 2px solid var(--color-4);
+      border-radius: 50px;
+      padding: 8px 15px;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      box-shadow: 2px 2px 0 rgba(0,0,0,0.1);
+    }
+    
+    .achievements {
+      list-style-type: none;
+      padding-left: 10px;
+    }
+    
+    .achievements li {
+      position: relative;
+      padding-left: 25px;
+      margin-bottom: 10px;
+    }
+    
+    .achievements li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: var(--color-5);
+      font-weight: bold;
+    }
+    
+    .quote {
+      font-family: 'Nanum Pen Script', cursive;
+      font-size: 16px;
+      padding: 15px;
+      background-color: #f8f9fa;
+      border-left: 4px solid var(--color-3);
+      margin: 15px 0;
+      position: relative;
+    }
+    
+    .quote::before, .quote::after {
+      content: """;
+      font-size: 50px;
+      color: var(--color-3);
+      opacity: 0.3;
+      position: absolute;
+    }
+    
+    .quote::before {
+      top: -10px;
+      left: 5px;
+    }
+    
+    .quote::after {
+      content: """;
+      bottom: -30px;
+      right: 5px;
+    }
+    
+    .milestone {
+      position: relative;
+      padding-left: 30px;
+      margin-bottom: 15px;
+    }
+    
+    .milestone::before {
+      content: "📌";
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+    
+    .vision-box {
+      background: linear-gradient(135deg, rgba(242,230,60,0.1), rgba(242,68,4,0.1));
+      border-radius: 12px;
+      padding: 20px;
+      margin: 20px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .vision-box::after {
+      content: "VISION";
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      font-size: 60px;
+      color: rgba(89,60,71,0.05);
+      font-weight: bold;
+      transform: rotate(-5deg);
+    }
+    
+    .key-points {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    
+    .key-point {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    
+    .key-point-icon {
+      flex-shrink: 0;
+      width: 30px;
+      height: 30px;
+      background-color: var(--color-3);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: bold;
+      color: var(--color-1);
+    }
+    
+    .footer {
+      margin-top: 30px;
+      padding-top: 20px;
+      border-top: 2px dashed var(--color-3);
+      text-align: center;
+      font-size: 12px;
+      color: #64748b;
+    }
+    
+    /* 연결선 효과 */
+    .connector {
+      position: absolute;
+      width: 120px;
+      height: 40px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='40' fill='none'%3E%3Cpath d='M5 20C25 5 95 35 115 20' stroke='%23F2C53D' stroke-width='2' stroke-dasharray='4 2'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      z-index: 1;
+    }
+
+    /* 반응형 스타일 */
+    @media (max-width: 900px) {
+      .content {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    
+    @media (max-width: 600px) {
+      .content {
+        grid-template-columns: 1fr;
+      }
+      
+      .header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1 class="title">세종교육의 미래 중심에 '학교지원본부'가 있다</h1>
+      <div class="date-source">
+        <p>2025.03.05</p>
+        <p>장중식 기자</p>
+      </div>
+    </div>
+    
+    <div class="content">
+      <!-- 첫 번째 컬럼 -->
+      <div>
+        <div class="section">
+          <h2 class="section-title">📚 학교지원본부란?</h2>
+          <div class="card">
+            <p>지난해 7월 1일 <span class="highlight">전국에서 네 번째로 출범</span>한 세종시교육청 학교지원본부는 교육활동 중심 학교 구현을 위한 핵심 정책 기관입니다.</p>
+            
+            <div class="bubble">
+              <p>💡 <strong>핵심 목표</strong></p>
+              <p>학교가 가르치고 배우는 일, 즉 <span class="highlight">교육활동에 집중</span>할 수 있도록 지원하는 것</p>
+            </div>
+            
+            <div class="milestone">
+              <p><strong>설립 배경</strong>: 오랜 시간의 토론과 숙의, 의견수렴을 거쳐 출범</p>
+            </div>
+            
+            <div class="quote">
+              "학교가 원하는 방식으로 교육활동에 도움이 되는 일은 더하고, 방해가 되는 일은 빼며 학교 교육활동을 지원할 계획입니다."
+              <p style="text-align: right; margin-top: 5px;">- 이미자 학교지원본부장</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="section">
+          <h2 class="section-title">🏢 학교지원본부 4개 부서</h2>
+          <div class="card">
+            <p>전국 최대 규모의 학교 지원 전담 기관으로, 4개 부서가 체계적으로 학교 지원</p>
+            
+            <div class="dept-container">
+              <div class="dept">교육지원부</div>
+              <div class="dept">행정지원부</div>
+              <div class="dept">화해중재부</div>
+              <div class="dept">시설지원부</div>
+            </div>
+            
+            <div style="margin-top: 20px;">
+              <div class="key-point">
+                <div class="key-point-icon">1</div>
+                <div>
+                  <p><strong>교육지원부</strong></p>
+                  <p>수업결손 해소, 현장체험학습 지원, 학생복지 지원, 초등 늘봄교실 운영 지원, 교육활동 보호</p>
+                </div>
+              </div>
+              
+              <div class="key-point">
+                <div class="key-point-icon">2</div>
+                <div>
+                  <p><strong>행정지원부</strong></p>
+                  <p>학교행정 공백 해소, 학교 통합계약 지원, 인력 채용 지원, 학교 차량 지원, 학생해양수련원 이용</p>
+                </div>
+              </div>
+              
+              <div class="key-point">
+                <div class="key-point-icon">3</div>
+                <div>
+                  <p><strong>화해중재부</strong></p>
+                  <p>학교폭력 사안 조사부터 심의까지 공정한 사안 처리, 피·가해 학생 맞춤형 치유 지원</p>
+                </div>
+              </div>
+              
+              <div class="key-point">
+                <div class="key-point-icon">4</div>
+                <div>
+                  <p><strong>시설지원부</strong></p>
+                  <p>학교시설 정기 검사, 교육용 스마트 기기 보급 및 유지·관리, 찾아가는 시설 관리 및 현장지원팀 운영</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 두 번째 컬럼 -->
+      <div>
+        <div class="section">
+          <h2 class="section-title">✨ 학교지원본부 주요 성과</h2>
+          <div class="card">
+            <ul class="achievements">
+              <li>학교 교육활동 지원 기관 업무 체계 구축</li>
+              <li>'학교지원본부 사용설명서' 제작·배포로 학교와 교사의 편의성 증대</li>
+              <li>전체 유치원과 학교 대상 일대일 전담소통 창구 마련</li>
+              <li>출범 후 총 26건의 맞춤형 신속 지원 접수·지원</li>
+              <li>SNS 계정 개설로 효율적인 업무 추진</li>
+              <li>관내 전체 유치원과 학교 방문으로 현장 소통 강화</li>
+              <li>현장 교직원으로 구성된 학교지원연구회 운영</li>
+              <li>2024년 58개 지원 사업 완료, 2025년 72개 사업 선정</li>
+            </ul>
+            
+            <div class="bubble" style="border-color: var(--color-4);">
+              <p>🏆 <strong>만족도 성과</strong></p>
+              <p>한국교육개발원(KEDI) 주관 전국 학교지원 전담기관 만족도 조사에서 <span class="highlight">직속기관 형태 중 인지도와 현장 만족도 1위</span> 달성!</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="section">
+          <h2 class="section-title">🔄 지원 체계</h2>
+          <div class="card">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+              <div style="text-align: center; padding: 10px; background-color: var(--color-2); border-radius: 8px; width: 45%;">
+                <p style="font-weight: bold;">고정지원사업</p>
+              </div>
+              <div style="text-align: center; padding: 10px; background-color: var(--color-3); border-radius: 8px; width: 45%;">
+                <p style="font-weight: bold;">비고정지원사업</p>
+              </div>
+            </div>
+            
+            <div style="display: flex; gap: 15px; margin-bottom: 15px;">
+              <div style="flex: 1; border: 1px dashed var(--color-1); padding: 10px; border-radius: 8px;">
+                <p>✅ 정기·수시 지원</p>
+                <p>✅ 교육, 행정, 시설 분야</p>
+                <p>✅ '학교지원본부 사용설명서' 배포</p>
+              </div>
+              <div style="flex: 1; border: 1px dashed var(--color-1); padding: 10px; border-radius: 8px;">
+                <p>✅ 일대일 전담소통 창구</p>
+                <p>✅ 학교별 맞춤형 지원</p>
+                <p>✅ 신속한 문제 해결</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="section">
+          <h2 class="section-title">💰 재정 상황</h2>
+          <div class="card">
+            <div class="milestone">
+              <p><strong>도전과제</strong>: 지방교육재정교부금 2년 연속 대폭 감소</p>
+            </div>
+            
+            <div class="milestone">
+              <p><strong>대응방안</strong>: 안정화 기금을 활용하여 재정 결손 보완</p>
+            </div>
+            
+            <div class="quote">
+              "재정 여건이 어려운 것은 사실이나 학교의 교육활동이 위축되지 않도록 본부 직원들과 지혜를 모아 노력하겠습니다."
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 세 번째 컬럼 -->
+      <div>
+        <div class="section">
+          <h2 class="section-title">🔍 본부장 인터뷰 요약</h2>
+          <div class="card">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='40' r='30' fill='%23f0f0f0'/%3E%3Ccircle cx='50' cy='30' r='10' fill='%23d1d1d1'/%3E%3Cpath d='M25 85 Q50 70 75 85' fill='none' stroke='%23d1d1d1' stroke-width='30'/%3E%3C/svg%3E" alt="이미자 본부장" style="width: 80px; height: 80px; display: block; margin: 0 auto 15px auto; border-radius: 50%; border: 2px solid var(--color-3);">
+            
+            <p style="text-align: center; margin-bottom: 15px; font-weight: bold;">이미자 세종시교육청 학교지원본부장</p>
+            
+            <div class="vision-box">
+              <p style="font-weight: bold; font-size: 18px; margin-bottom: 10px;">학교지원본부의 비전</p>
+              <p>➊ 현장과 밀착하여 끊임없이 소통</p>
+              <p>➋ 상향식 정책 추진의 기반 강화</p>
+              <p>➌ 학교의 필요와 요구 수렴</p>
+              <p>➍ 학교의 자율성과 책무성 지원</p>
+            </div>
+            
+            <div class="quote">
+              "학교와 함께 같은 방향을 바라보며 보조를 맞추어 한 걸음 한 걸음 나아가며 기관의 역할을 완성하겠습니다. 지난해 경험과 성과를 바탕으로 학교를 보다 밀착 지원해 '학교 중심 동행 지원'을 정착시키는 해로 만들고자 합니다."
+            </div>
+          </div>
+        </div>
+        
+        <div class="section">
+          <h2 class="section-title">🌟 2025년 중점 추진 방향</h2>
+          <div class="card">
+            <div style="position: relative; padding-bottom: 20px;">
+              <div style="background-color: var(--color-light); border-radius: 12px; padding: 15px; margin-bottom: 15px; border-left: 4px solid var(--color-5);">
+                <p style="font-weight: bold;">5대 정책 목표</p>
+                <p>세종교육의 큰 틀 유지</p>
+              </div>
+              
+              <div class="arrow" style="position: absolute; left: 50%; transform: translateX(-50%) rotate(90deg);"></div>
+              
+              <div style="background-color: var(--color-light); border-radius: 12px; padding: 15px; border-left: 4px solid var(--color-4);">
+                <p style="font-weight: bold;">3대 핵심정책과제</p>
+                <ol style="padding-left: 20px;">
+                  <li>기초학력 책임교육 강화</li>
+                  <li>생활·정서·학습 통합지원</li>
+                  <li><span class="highlight">교육활동 중심 학교 구현</span></li>
+                </ol>
+              </div>
+            </div>
+            
+            <div style="margin-top: 20px; border: 2px dashed var(--color-4); padding: 15px; border-radius: 12px;">
+              <p style="text-align: center; font-weight: bold; margin-bottom: 10px;">2025년 학교지원본부 활동 방향</p>
+              <p>✅ 학교 중심 동행 지원 정착</p>
+              <p>✅ 현장과의 밀착 소통 강화</p>
+              <p>✅ 교육활동 중심 학교 구현 선도</p>
+              <p>✅ 상향식 정책 추진 기반 공고화</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer">
+      <p>출처: 세종시교육청 학교지원본부 인터뷰 기사 (2025.03.05) | 장중식 기자</p>
+    </div>
+  </div>
+</body>
+</html> 위 코드가 가독성이 떨어진다는 지적이야 한글글꼴 중 가독성이 좋은 글꼴로 교체해주고 접근성을 높일 수 있도록 디자인 요소를 적용해 가독성을 높여주는 코드를 수정 제작해줘
